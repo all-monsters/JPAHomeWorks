@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="NewPersistenceUnit">
+        <!--
+                配置使用什么ORM 产品作为JPA 的实现
+                1.实际上配置的是 javax.persistence.spi.PersistenceProvider 接口的实现类
+                2.若JPA项目中只有一个JPA的实现产品，则也可以不配置该节点。
+                -->
+        <!-- 添加持久化类-->
+        <class>cn.com.taiji.domain.Article</class>
+        <class>cn.com.taiji.domain.Address</class>
+        <class>cn.com.taiji.domain.People</class>
+        <class>cn.com.taiji.domain.Authority</class>
+        <class>cn.com.taiji.domain.User</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test?serverTimezone=GMT" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="123456" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+
+            <property name="eclipselink.logging.level" value="FINE" />
+            <property name="eclipselink.ddl-generation"
+                      value="create-tables" />
+
+            <!-- 配置JPA实现产品的属性，即hibernate的属性 -->
+            <property name="hibernate.format_sql" value="true" /><!-- 是否格式化sql语句 -->
+            <property name="hibernate.show_sql" value="true" /> <!-- 是否在控制台打印sql语句 -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
+
